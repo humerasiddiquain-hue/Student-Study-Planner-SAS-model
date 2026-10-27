@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A beginner-friendly Student Study Planner SaaS demo for tasks, timetables, progress, reminders, and study tips.">
+  <title>StudyMate | Student Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="StudyMate home"><span class="brand-icon">✦</span> StudyMate</a>
+    <div class="topbar-right"><span class="online-dot"></span><span>Personal study space</span></div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">YOUR STUDY COMPANION ✨</p>
+        <h1>Make every study session <span>count.</span></h1>
+        <p class="hero-copy">Plan your day, stay on top of deadlines, and celebrate every small win.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="sun">☀</div><div class="book">📚</div><div class="spark spark-one">✦</div><div class="spark spark-two">✧</div></div>
+    </section>
+
+    <section class="stats-grid" aria-label="Study summary">
+      <article class="stat-card"><div class="stat-label">Total tasks</div><div class="stat-value" id="totalTasks">0</div><div class="stat-foot">Your study checklist</div></article>
+      <article class="stat-card"><div class="stat-label">Completed</div><div class="stat-value" id="completedTasks">0</div><div class="stat-foot">Every step matters</div></article>
+      <article class="stat-card"><div class="stat-label">Study progress</div><div class="stat-value" id="progressPercent">0%</div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></article>
+      <article class="stat-card"><div class="stat-label">Upcoming exams</div><div class="stat-value" id="examCount">0</div><div class="stat-foot">Keep your dates close</div></article>
+    </section>
+
+    <section class="main-grid">
+      <div class="panel task-panel">
+        <div class="panel-heading"><div><p class="eyebrow">STAY ORGANIZED</p><h2>My study tasks</h2></div><span class="panel-icon">✓</span></div>
+        <form id="taskForm" class="task-form">
+          <label for="taskTitle">Task name</label>
+          <input id="taskTitle" type="text" placeholder="e.g. Revise Python loops" maxlength="100" required>
+          <div class="form-row">
+            <div><label for="taskSubject">Subject</label><input id="taskSubject" type="text" placeholder="e.g. Python" maxlength="40"></div>
+            <div><label for="taskDate">Due date</label><input id="taskDate" type="date"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="taskPriority">Priority</label><select id="taskPriority"><option>Medium</option><option>High</option><option>Low</option></select></div>
+            <div><label for="taskMinutes">Study time (min)</label><input id="taskMinutes" type="number" min="5" max="600" value="30"></div>
+          </div>
+          <button class="button button-primary" type="submit">＋ Add task</button>
+        </form>
+        <div class="task-toolbar"><h3>Task list</h3><select id="taskFilter" aria-label="Filter tasks"><option value="all">All tasks</option><option value="active">To do</option><option value="completed">Completed</option></select></div>
+        <div id="taskList" class="task-list"><div class="empty-state">🌱 Your next win starts with one task.</div></div>
+      </div>
+
+      <div class="side-column">
+        <section class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">MAKE A PLAN</p><h2>Study timetable</h2></div><span class="panel-icon">◷</span></div>
+          <form id="scheduleForm" class="compact-form">
+            <label for="scheduleDay">Day</label><select id="scheduleDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select>
+            <label for="scheduleTime">Time</label><input id="scheduleTime" type="time" value="17:00" required>
+            <label for="scheduleSubject">Subject / activity</label><input id="scheduleSubject" type="text" placeholder="e.g. Mathematics" maxlength="80" required>
+            <button class="button button-secondary" type="submit">Add to timetable</button>
+          </form>
+          <div id="scheduleList" class="schedule-list"><div class="empty-state small">Add a study session to get started.</div></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">SAVE THE DATE</p><h2>Exam reminders</h2></div><span class="panel-icon">♧</span></div>
+          <form id="examForm" class="compact-form">
+            <label for="examName">Exam / deadline</label><input id="examName" type="text" placeholder="e.g. Physics midterm" maxlength="80" required>
+            <div class="form-row">
+              <div class="full-width"><label for="examDate">Date</label><input id="examDate" type="date" required></div>
+            </div>
+            <button class="button button-secondary" type="submit">＋ Add reminder</button>
+          </form>
+          <div id="examList" class="exam-list"><div class="empty-state small">No exam reminders yet.</div></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="panel recommendations">
+      <div class="panel-heading"><div><p class="eyebrow">A LITTLE GUIDANCE</p><h2>Study recommendations</h2></div><span class="panel-icon">✧</span></div>
+      <p class="section-copy">Personalized rule-based suggestions based on your tasks. This beginner demo does not connect to an AI service.</p>
+      <div id="recommendations" class="recommendation-grid"><article class="tip-card"><span>💡</span><h3>Start small</h3><p>Add a task and your study suggestions will appear here.</p></article></div>
+    </section>
+
+    <footer><span>StudyMate • Student Study Planner</span><span>Built with HTML, CSS & JavaScript 💜</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
